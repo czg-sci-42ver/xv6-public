@@ -8,6 +8,7 @@
 
 .globl swtch
 swtch:
+  ; how these esp works by `push   %edi`, etc.
   movl 4(%esp), %eax
   movl 8(%esp), %edx
 

@@ -54,6 +54,10 @@ void panic(char*);
 struct cmd *parsecmd(char*);
 
 // Execute cmd.  Never returns.
+/*
+https://github.com/mit-pdos/xv6-riscv/issues/125
+*/
+__attribute__((noreturn))
 void
 runcmd(struct cmd *cmd)
 {
