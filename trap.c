@@ -26,6 +26,9 @@ tvinit(void)
   initlock(&tickslock, "time");
 }
 
+/*
+Use lidt to load the table.
+*/
 void
 idtinit(void)
 {

@@ -77,7 +77,14 @@ static inline void
 lidt(struct gatedesc *p, int size)
 {
   volatile ushort pd[3];
+  /*
+  From https://www.felixcloutier.com/x86/lgdt:lidt#operation
+  the SRC[0:15] -> pd[0]
 
+  TODO what does this mean?
+  > a 16-bit limit (lower 2 bytes of the 6-byte data operand) and a 32-bit base address (upper 4 bytes of the data operand)
+  the higher address pd[2] stores the higher bits, which seems to be big endian.
+  */
   pd[0] = size-1;
   pd[1] = (uint)p;
   pd[2] = (uint)p >> 16;
